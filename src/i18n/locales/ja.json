@@ -1,0 +1,32 @@
+{
+  "title": "ポモドーロタイマー",
+  "subtitle": "集中力と生産性を保つ",
+  "timer": {
+    "work": "作業時間",
+    "break": "休憩時間",
+    "start": "開始",
+    "resume": "再開",
+    "pause": "一時停止",
+    "reset": "リセット"
+  },
+  "settings": {
+    "title": "設定",
+    "workDuration": "作業時間（分）",
+    "breakDuration": "休憩時間（分）"
+  },
+  "tasks": {
+    "title": "タスク",
+    "add": "タスクを追加",
+    "placeholder": "何を作業していますか？",
+    "noTasks": "タスクはありません",
+    "completed": "完了",
+    "inProgress": "進行中",
+    "pending": "未着手"
+  },
+  "stats": {
+    "title": "統計",
+    "totalPomodoros": "合計ポモドーロ",
+    "totalTime": "合計時間",
+    "todayPomodoros": "今日のポモドーロ"
+  }
+}

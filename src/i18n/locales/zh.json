@@ -1,0 +1,32 @@
+{
+  "title": "番茄时钟",
+  "subtitle": "保持专注和高效",
+  "timer": {
+    "work": "工作时间",
+    "break": "休息时间",
+    "start": "开始",
+    "resume": "继续",
+    "pause": "暂停",
+    "reset": "重置"
+  },
+  "settings": {
+    "title": "设置",
+    "workDuration": "工作时长（分钟）",
+    "breakDuration": "休息时长（分钟）"
+  },
+  "tasks": {
+    "title": "任务",
+    "add": "添加任务",
+    "placeholder": "你在做什么？",
+    "noTasks": "暂无任务",
+    "completed": "已完成",
+    "inProgress": "进行中",
+    "pending": "待处理"
+  },
+  "stats": {
+    "title": "统计",
+    "totalPomodoros": "总番茄数",
+    "totalTime": "总时长",
+    "todayPomodoros": "今日番茄数"
+  }
+}

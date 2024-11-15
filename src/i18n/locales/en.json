@@ -1,0 +1,32 @@
+{
+  "title": "Pomodoro Timer",
+  "subtitle": "Stay focused and productive",
+  "timer": {
+    "work": "Work Time",
+    "break": "Break Time",
+    "start": "Start",
+    "resume": "Resume",
+    "pause": "Pause",
+    "reset": "Reset"
+  },
+  "settings": {
+    "title": "Settings",
+    "workDuration": "Work Duration (minutes)",
+    "breakDuration": "Break Duration (minutes)"
+  },
+  "tasks": {
+    "title": "Tasks",
+    "add": "Add Task",
+    "placeholder": "What are you working on?",
+    "noTasks": "No tasks yet",
+    "completed": "Completed",
+    "inProgress": "In Progress",
+    "pending": "Pending"
+  },
+  "stats": {
+    "title": "Statistics",
+    "totalPomodoros": "Total Pomodoros",
+    "totalTime": "Total Time",
+    "todayPomodoros": "Today's Pomodoros"
+  }
+}
