@@ -7,12 +7,18 @@
     "start": "开始",
     "resume": "继续",
     "pause": "暂停",
-    "reset": "重置"
+    "reset": "重置",
+    "selectTask": "请先选择一个任务",
+    "longBreak": "长休息时间"
   },
   "settings": {
     "title": "设置",
     "workDuration": "工作时长（分钟）",
-    "breakDuration": "休息时长（分钟）"
+    "breakDuration": "休息时长（分钟）",
+    "longBreakDuration": "长休息时长（分钟）",
+    "autoStartNext": "自动开始下一个环节",
+    "soundEnabled": "启用提示音",
+    "notificationEnabled": "启用浏览器通知"
   },
   "tasks": {
     "title": "任务",
@@ -21,12 +27,25 @@
     "noTasks": "暂无任务",
     "completed": "已完成",
     "inProgress": "进行中",
-    "pending": "待处理"
+    "pending": "待处理",
+    "clearAll": "清除全部",
+    "edit": "编辑任务",
+    "delete": "删除任务",
+    "settings": "任务设置",
+    "confirmDelete": "确定要删除这个任务吗？"
   },
   "stats": {
     "title": "统计",
     "totalPomodoros": "总番茄数",
     "totalTime": "总时长",
-    "todayPomodoros": "今日番茄数"
+    "todayPomodoros": "今日番茄数",
+    "weeklyStats": "周统计",
+    "monthlyStats": "月统计",
+    "taskStats": "任务统计",
+    "productivityTrend": "生产性趋势"
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "取消"
   }
 }

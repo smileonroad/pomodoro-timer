@@ -4,29 +4,48 @@
   "timer": {
     "work": "Work Time",
     "break": "Break Time",
+    "longBreak": "Long Break",
     "start": "Start",
     "resume": "Resume",
     "pause": "Pause",
-    "reset": "Reset"
+    "reset": "Reset",
+    "selectTask": "Please select a task to start"
   },
   "settings": {
     "title": "Settings",
     "workDuration": "Work Duration (minutes)",
-    "breakDuration": "Break Duration (minutes)"
+    "breakDuration": "Break Duration (minutes)",
+    "longBreakDuration": "Long Break Duration (minutes)",
+    "autoStartNext": "Auto-start next session",
+    "soundEnabled": "Enable sound notification",
+    "notificationEnabled": "Enable browser notification"
   },
   "tasks": {
     "title": "Tasks",
     "add": "Add Task",
+    "edit": "Edit Task",
+    "delete": "Delete Task",
     "placeholder": "What are you working on?",
     "noTasks": "No tasks yet",
     "completed": "Completed",
     "inProgress": "In Progress",
-    "pending": "Pending"
+    "pending": "Pending",
+    "settings": "Task Settings",
+    "confirmDelete": "Are you sure to delete this task?",
+    "clearAll": "Clear All"
   },
   "stats": {
     "title": "Statistics",
     "totalPomodoros": "Total Pomodoros",
     "totalTime": "Total Time",
-    "todayPomodoros": "Today's Pomodoros"
+    "todayPomodoros": "Today's Pomodoros",
+    "weeklyStats": "Weekly Stats",
+    "monthlyStats": "Monthly Stats",
+    "taskStats": "Task Stats",
+    "productivityTrend": "Productivity Trend"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel"
   }
 }

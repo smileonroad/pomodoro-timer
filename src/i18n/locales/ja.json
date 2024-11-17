@@ -2,31 +2,46 @@
   "title": "ポモドーロタイマー",
   "subtitle": "集中力と生産性を保つ",
   "timer": {
-    "work": "作業時間",
-    "break": "休憩時間",
-    "start": "開始",
-    "resume": "再開",
-    "pause": "一時停止",
-    "reset": "リセット"
+  "work": "作業時間",
+  "break": "休憩時間",
+  "longBreak": "長い休憩",
+  "start": "開始",
+  "resume": "再開",
+  "pause": "一時停止",
+  "reset": "リセット",
+  "selectTask": "タスクを選択してください"
   },
   "settings": {
-    "title": "設定",
-    "workDuration": "作業時間（分）",
-    "breakDuration": "休憩時間（分）"
+  "title": "設定",
+  "workDuration": "作業時間（分）",
+  "breakDuration": "休憩時間（分）",
+  "longBreakDuration": "長い休憩時間（分）",
+  "autoStartNext": "次のセッションを自動開始",
+  "soundEnabled": "通知音を有効にする",
+  "notificationEnabled": "ブラウザ通知を有効にする"
   },
   "tasks": {
-    "title": "タスク",
-    "add": "タスクを追加",
-    "placeholder": "何を作業していますか？",
-    "noTasks": "タスクはありません",
-    "completed": "完了",
-    "inProgress": "進行中",
-    "pending": "未着手"
+  "title": "タスク",
+  "add": "タスクを追加",
+  "edit": "タスクを編集",
+  "delete": "タスクを削除",
+  "placeholder": "何を作業していますか？",
+  "noTasks": "タスクはありません",
+  "completed": "完了",
+  "inProgress": "進行中",
+  "pending": "未着手",
+  "settings": "タスク設定",
+  "confirmDelete": "このタスクを削除してもよろしいですか？",
+  "clearAll": "すべてクリア"
   },
   "stats": {
-    "title": "統計",
-    "totalPomodoros": "合計ポモドーロ",
-    "totalTime": "合計時間",
-    "todayPomodoros": "今日のポモドーロ"
+  "title": "統計",
+  "totalPomodoros": "合計ポモドーロ",
+  "totalTime": "合計時間",
+  "todayPomodoros": "今日のポモドーロ",
+  "weeklyStats": "週間統計",
+  "monthlyStats": "月間統計",
+  "taskStats": "タスク統計",
+  "productivityTrend": "生産性トレンド"
   }
-}
+  }

@@ -1,39 +1,66 @@
 import React, { useContext, useState } from 'react';
 import { TaskContext } from '../context/TaskContext';
 import { useTranslation } from 'react-i18next';
-import { Plus, Check, Play } from 'lucide-react';
+import { Plus, Check, Play, Settings, Trash2 } from 'lucide-react';
+import TaskSettingsModal from './TaskSettingsModal';
+import { Task, TaskSettings } from '../types';
 
 const TaskList = () => {
   const { t } = useTranslation();
-  const { tasks, addTask, selectTask, setTaskStatus } = useContext(TaskContext);
+  const { tasks, addTask, updateTask, deleteTask, currentTask, selectTask, clearTasks } = useContext(TaskContext);
   const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [editingTask, setEditingTask] = useState<Task | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleAddTask = (e: React.FormEvent) => {
     e.preventDefault();
     if (newTaskTitle.trim()) {
-      addTask(newTaskTitle.trim());
+      addTask(newTaskTitle);
       setNewTaskTitle('');
     }
   };
 
+  const handleTaskClick = (task: Task) => {
+    selectTask(task.id === currentTask?.id ? null : task);
+  };
+
+  const handleEditTask = (task: Task) => {
+    setEditingTask(task);
+  };
+
+  const handleUpdateTaskSettings = (taskId: string, settings: TaskSettings) => {
+    updateTask(taskId, { settings });
+    setEditingTask(null);
+  };
+
   return (
-    <div className="mt-8">
-      <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
-        {t('tasks.title')}
-      </h2>
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-lg font-semibold flex items-center gap-2">
+          <span>{t('tasks.title')}</span>
+        </h2>
+        {tasks.length > 0 && (
+          <button
+            onClick={clearTasks}
+            className="px-3 py-1 text-sm text-rose-500 hover:text-rose-600 flex items-center gap-1"
+          >
+            <Trash2 className="w-4 h-4" />
+            <span>{t('tasks.clearAll')}</span>
+          </button>
+        )}
+      </div>
       
-      <form onSubmit={handleSubmit} className="mb-4">
+      <form onSubmit={handleAddTask} className="mb-4">
         <div className="flex gap-2">
           <input
             type="text"
             value={newTaskTitle}
             onChange={(e) => setNewTaskTitle(e.target.value)}
             placeholder={t('tasks.placeholder')}
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg"
           />
           <button
             type="submit"
-            className="px-4 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition-colors"
+            className="p-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600"
           >
             <Plus className="w-5 h-5" />
           </button>
@@ -49,37 +76,43 @@ const TaskList = () => {
           tasks.map((task) => (
             <div
               key={task.id}
-              className="flex items-center justify-between p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm"
+              className={`flex items-center justify-between p-3 rounded-lg border ${
+                task.id === currentTask?.id
+                  ? 'border-rose-500 bg-rose-50 dark:bg-rose-900/20'
+                  : 'border-gray-200 dark:border-gray-700'
+              }`}
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-1">
                 <button
-                  onClick={() => setTaskStatus(task.id, 'completed')}
-                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center
-                    ${task.status === 'completed'
-                      ? 'border-green-500 bg-green-500 text-white'
-                      : 'border-gray-300 dark:border-gray-600'
-                    }`}
+                  onClick={() => handleTaskClick(task)}
+                  className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
                 >
-                  {task.status === 'completed' && <Check className="w-3 h-3" />}
+                  <Play className={`w-4 h-4 ${
+                    task.id === currentTask?.id ? 'text-rose-500' : 'text-gray-400'
+                  }`} />
                 </button>
-                <span className={`${
-                  task.status === 'completed' ? 'line-through text-gray-500' : ''
-                }`}>
-                  {task.title}
-                </span>
+                <span className="text-gray-800 dark:text-gray-200">{task.title}</span>
               </div>
-              {task.status !== 'completed' && (
+              <div className="flex items-center gap-2">
                 <button
-                  onClick={() => selectTask(task.id)}
-                  className="text-rose-500 hover:text-rose-600"
+                  onClick={() => handleEditTask(task)}
+                  className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
                 >
-                  <Play className="w-5 h-5" />
+                  <Settings className="w-4 h-4 text-gray-400" />
                 </button>
-              )}
+              </div>
             </div>
           ))
         )}
       </div>
+
+      {editingTask && (
+        <TaskSettingsModal
+          task={editingTask}
+          onClose={() => setEditingTask(null)}
+          onSave={handleUpdateTaskSettings}
+        />
+      )}
     </div>
   );
 };

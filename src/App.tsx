@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Timer from './components/Timer';
-import Settings from './components/Settings';
 import TaskList from './components/TaskList';
 import Stats from './components/Stats';
 import LanguageSelector from './components/LanguageSelector';
@@ -14,8 +13,8 @@ function App() {
   const { t } = useTranslation();
 
   return (
-    <TimerProvider>
-      <TaskProvider>
+    <TaskProvider>
+      <TimerProvider>
         <div className="min-h-screen bg-gradient-to-br from-rose-50 to-rose-100 dark:from-gray-900 dark:to-gray-800 p-4">
           <LanguageSelector />
           <div className="max-w-4xl mx-auto">
@@ -33,7 +32,6 @@ function App() {
               <div>
                 <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
                   <Timer />
-                  <Settings />
                 </div>
                 <Stats />
               </div>
@@ -44,8 +42,8 @@ function App() {
             </div>
           </div>
         </div>
-      </TaskProvider>
-    </TimerProvider>
+      </TimerProvider>
+    </TaskProvider>
   );
 }
 

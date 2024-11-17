@@ -1,8 +1,12 @@
 import React, { useEffect, useContext } from 'react';
 import { TimerContext } from '../context/TimerContext';
 import { Play, Pause, RotateCcw } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { TaskContext } from '../context/TaskContext';
 
 const Timer = () => {
+  const { t } = useTranslation();
+  const { currentTask } = useContext(TaskContext);
   const {
     timeLeft,
     isActive,
@@ -13,14 +17,30 @@ const Timer = () => {
     resetTimer,
   } = useContext(TimerContext);
 
+  if (!currentTask) {
+    return (
+      <div className="text-center p-8">
+        <p className="text-gray-500 dark:text-gray-400">
+          {t('timer.selectTask')}
+        </p>
+      </div>
+    );
+  }
+
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 
   const formatTime = (time: number) => time.toString().padStart(2, '0');
 
   const getProgressPercentage = () => {
-    const { workTime, breakTime } = useContext(TimerContext);
-    const totalTime = currentMode === 'work' ? workTime * 60 : breakTime * 60;
+    if (!currentTask) return 0;
+    
+    const totalTime = currentMode === 'work' 
+      ? currentTask.settings.workTime * 60 
+      : currentMode === 'break' 
+        ? currentTask.settings.breakTime * 60 
+        : currentTask.settings.longBreakTime * 60;
+        
     return ((totalTime - timeLeft) / totalTime) * 100;
   };
 
@@ -54,7 +74,7 @@ const Timer = () => {
               {formatTime(minutes)}:{formatTime(seconds)}
             </div>
             <div className="text-gray-500 dark:text-gray-400 capitalize mt-2">
-              {currentMode} Time
+              {t(`timer.${currentMode}`)}
             </div>
           </div>
         </div>
@@ -63,26 +83,27 @@ const Timer = () => {
           {!isActive || isPaused ? (
             <button
               onClick={startTimer}
-              className="flex items-center gap-2 px-6 py-3 bg-rose-500 text-white rounded-full hover:bg-rose-600 transition-colors"
+              className="flex items-center gap-2 px-6 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600"
             >
               <Play className="w-5 h-5" />
-              {isPaused ? 'Resume' : 'Start'}
+              <span>{t('timer.start')}</span>
             </button>
           ) : (
             <button
               onClick={pauseTimer}
-              className="flex items-center gap-2 px-6 py-3 bg-gray-500 text-white rounded-full hover:bg-gray-600 transition-colors"
+              className="flex items-center gap-2 px-6 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600"
             >
               <Pause className="w-5 h-5" />
-              Pause
+              <span>{t('timer.pause')}</span>
             </button>
           )}
+          
           <button
             onClick={resetTimer}
-            className="flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+            className="flex items-center gap-2 px-6 py-2 border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
           >
             <RotateCcw className="w-5 h-5" />
-            Reset
+            <span>{t('timer.reset')}</span>
           </button>
         </div>
       </div>
